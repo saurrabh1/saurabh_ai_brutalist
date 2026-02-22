@@ -1,0 +1,55 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-offwhite text-dark font-sans overflow-x-hidden;
+    /* Brutalist starkness */
+    -webkit-font-smoothing: auto;
+    -moz-osx-font-smoothing: auto;
+  }
+}
+
+@layer utilities {
+  .noise-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    pointer-events: none;
+    z-index: 9999;
+    opacity: 0.05;
+    mix-blend-mode: multiply;
+  }
+
+  .btn-magnetic {
+    @apply relative overflow-hidden inline-flex items-center justify-center transition-all duration-500 ease-magnetic;
+  }
+
+  .btn-magnetic:hover {
+    transform: scale(1.03);
+  }
+
+  .btn-magnetic::before {
+    content: '';
+    @apply absolute inset-0 bg-dark transform scale-x-0 origin-left transition-transform duration-500 ease-magnetic z-0;
+  }
+
+  .btn-magnetic:hover::before {
+    @apply scale-x-100;
+  }
+
+  .btn-text {
+    @apply relative z-10;
+  }
+
+  .link-hover {
+    @apply transition-transform duration-300 inline-block;
+  }
+
+  .link-hover:hover {
+    transform: translateY(-1px);
+  }
+}
